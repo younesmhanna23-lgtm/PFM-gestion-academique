@@ -1,0 +1,87 @@
+/* Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Background image */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    background: url("../IMAGES/campus mundiapolis.png") no-repeat center center/cover;
+    z-index: -2;
+}
+
+/* Blue overlay (70% transparent) */
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    background: rgba(0, 80, 160, 0.7); /* blue theme */
+    z-index: -1;
+}
+
+/* Left-aligned box */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 10%; /* Changé de 50% à 10% pour le placer à gauche */
+    transform: translateY(-50%); /* Changé pour ne centrer que verticalement */
+
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+
+    text-align: center;
+    color: white;
+    width: 300px;
+}
+
+/* Style for the newly added logo */
+.login-logo {
+    width: 80%;
+    max-width: 200px;
+    margin-bottom: 15px;
+}
+
+/* Inputs */
+.container input {
+    width: 99%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 6px;
+}
+
+/* Button */
+.container button {
+    width: 106%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #007BFF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.container button:hover {
+    background: #0056b3;
+}
+
+/* Forget password link */
+.container a {
+    display: block;
+    margin-top: 10px;
+    color: #d7dfe8;
+    text-decoration: none;
+}
