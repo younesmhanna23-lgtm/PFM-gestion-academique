@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="courses_title">Mes Cours - Mundiapolis</title>
+    <link rel="stylesheet" href="../CSS/dashboard.css">
+    <link rel="stylesheet" href="../CSS/courses.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../IMAGES/logo mundiapolis.png" alt="University Logo" width="180">
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> <span data-i18n="nav_dashboard">Tableau de bord</span></a></li>
+                <li><a href="courses.html" class="active"><i class="fas fa-book"></i> <span data-i18n="nav_courses">Mes Cours</span></a></li>
+                <li><a href="login.html" class="logout"><i class="fas fa-sign-out-alt"></i> <span data-i18n="nav_logout">Se déconnecter</span></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <button id="lang-toggle" class="btn-lang">FR / EN</button>
+            </header>
+
+            <div class="dashboard-header">
+                <h2 data-i18n="courses_header">Mes Cours Inscrits</h2>
+                <p data-i18n="courses_sub">Retrouvez ici le détail de vos modules actuels.</p>
+            </div>
+
+            <div class="courses-grid" id="courses-container">
+                </div>
+        </main>
+    </div>
+    
+    <script src="../JAVASCRIPT/i18n.js"></script>
+    <script src="../JAVASCRIPT/courses.js"></script>
+</body>
+</html>

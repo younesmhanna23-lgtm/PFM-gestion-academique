@@ -1,6 +1,26 @@
 // Wait for the HTML to fully load before running the script
 document.addEventListener("DOMContentLoaded", function() {
 
+
+    // --- NOUVEAU : Récupération des statistiques depuis PHP ---
+    fetch('../PHP/get_dashboard_stats.php')
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector('.user-name').innerText = `Bienvenue, ${data.student_name}`;
+            // Mettre à jour les cartes de statistiques en sélectionnant les éléments correspondants
+            const statValues = document.querySelectorAll('.stat-info h3');
+            if(statValues.length >= 3) {
+                statValues[0].innerText = data.enrolled;
+                statValues[1].innerText = data.credits;
+                statValues[2].innerText = data.gpa;
+            }
+        })
+        .catch(error => console.error('Erreur lors du chargement des stats:', error));
+
+    // --- 1. Sidebar Navigation Highlight --- (Le code existant continue ici...)
+    const navLinks = document.querySelectorAll(".nav-links a");
+    // ... reste du code
+
     // --- 1. Sidebar Navigation Highlight ---
     const navLinks = document.querySelectorAll(".nav-links a");
 
