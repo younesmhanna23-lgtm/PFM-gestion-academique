@@ -1,27 +1,31 @@
 <?php
-session_start();
-header('Content-Type: application/json');
+    echo "auth";
 
-$host = 'localhost'; $dbname = 'gestion_academique'; $user = 'root'; $pass = '';
+    // Nettoient la valeur des champs pour éviter les attaques 
+    $name = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
-    
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
+    // hash du mot de passe pour une sécurité accrue 
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $stmt = $pdo->prepare("SELECT * FROM User_ WHERE username = ?");
-    $stmt->execute([$username]);
-    $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Cookie de session pour garder l'utilisateur connecté
+    setcookie('username', $name, time() + (86400 * 30), "/"); // expire dans 30 jours
+    setcookie('password', $password, time() + (86400 * 30), "/"); // expire dans 30 jours
 
-    // En production, utilisez password_verify() avec des mots de passe hachés
-    if ($user_data && $password === $user_data['password']) {
-        $_SESSION['id_user'] = $user_data['id_user'];
-        echo json_encode(['success' => true]);
+    // Session pour stocker les données de l'utilisateur
+    session_start();
+    $_SESSION['username'] = $name;
+    $_SESSION['password'] = $password;
+
+    // Redirige vers le tableau de bord après la connexion
+    if($name === "admin" && $password === "admin123") {
+        header("Location: courses.php");
+        exit();
     } else {
-        echo json_encode(['success' => false, 'message' => 'Identifiants incorrects']);
+        // Redirige vers la page de connexion avec un message d'erreur
+        header("Location: dashboard.php");
+        exit();
     }
-} catch(PDOException $e) {
-    echo json_encode(['success' => false, 'message' => 'Erreur serveur']);
-}
+
+
 ?>

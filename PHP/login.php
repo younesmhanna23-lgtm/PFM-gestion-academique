@@ -1,3 +1,6 @@
+<?php
+    // login page
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,9 +20,9 @@
         <h1>Bienvenue</h1>
         <p>Connectez-vous à votre compte</p>
 
-        <form id="login-form">
-            <input type="text" id="username" placeholder="Nom d'utilisateur" required>
-            <input type="password" id="password" placeholder="Mot de passe" required>
+        <form id="login-form" action="auth.php" method="POST">
+            <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" required>
+            <input type="password" id="password" name="password" placeholder="Mot de passe" required>
             <button type="submit" data-i18n="login_btn">Se connecter</button>
             <a href="https://w3schoolsua.github.io/css/css_positioning_en.html#google_vignette">Mot de passe oublié ?</a>
             <div id="login-message" style="color: #ff4d4d; margin-top: 10px; font-size: 14px;"></div>

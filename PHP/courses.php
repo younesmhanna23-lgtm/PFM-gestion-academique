@@ -1,3 +1,11 @@
+<?php
+    // courses page
+    session_start();
+    if (!isset($_SESSION['username'])) {
+        header("Location: login.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,9 +23,9 @@
                 <img src="../IMAGES/logo mundiapolis.png" alt="University Logo" width="180">
             </div>
             <ul class="nav-links">
-                <li><a href="dashboard.html"><i class="fas fa-home"></i> <span data-i18n="nav_dashboard">Tableau de bord</span></a></li>
-                <li><a href="courses.html" class="active"><i class="fas fa-book"></i> <span data-i18n="nav_courses">Mes Cours</span></a></li>
-                <li><a href="login.html" class="logout"><i class="fas fa-sign-out-alt"></i> <span data-i18n="nav_logout">Se déconnecter</span></a></li>
+                <li><a href="dashboard.php"><i class="fas fa-home"></i> <span data-i18n="nav_dashboard">Tableau de bord</span></a></li>
+                <li><a href="courses.php" class="active"><i class="fas fa-book"></i> <span data-i18n="nav_courses">Mes Cours</span></a></li>
+                <li><a href="login.php" class="logout"><i class="fas fa-sign-out-alt"></i> <span data-i18n="nav_logout">Se déconnecter</span></a></li>
             </ul>
         </aside>
 

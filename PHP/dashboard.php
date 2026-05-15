@@ -1,3 +1,18 @@
+<?php
+    // dashboard page
+    session_start();
+    if (!isset($_SESSION['username'])) {
+        header("Location: login.php");
+        exit();
+    }
+
+    
+    if(isset($_POST["logout"])){
+        session_destroy();
+        header('location: login.php');
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -21,7 +36,7 @@
                 <li><a href="#"><i class="fas fa-calendar-alt"></i> Emploi du temps</a></li>
                 <li><a href="#"><i class="fas fa-graduation-cap"></i> Notes</a></li>
                 <li><a href="#"><i class="fas fa-cog"></i> Paramètres</a></li>
-                <li><a href="login.html" class="logout"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
+                <li><a href="login.php" class="logout"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
             </ul>
         </aside>
 
@@ -36,7 +51,12 @@
                     <div class="avatar">
                         <img src="https://via.placeholder.com/40" alt="User Profile">
                     </div>
-                    <span class="user-name">Bienvenue, Étudiant</span>
+                    <span class="user-name">
+                        <?php echo htmlspecialchars($_SESSION['username']); ?>
+                        <form action="dashboard.php" method="post">
+                            <input type="submit" name="logout" value="logout">
+                        </form>
+                    </span>
                 </div>
             </header>
 
